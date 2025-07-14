@@ -21,8 +21,8 @@ def prediction():
     # make prediction
     pred = model.predict([[q]])
 
-    return(render_template("prediction.html",r=pred)
-    # return(render_template("prediction.html", r=(-50.6*q)+90.2))    # # renders HTML template "prediction.html" --> # Frontend - Output Display
+return(render_template("prediction.html",r=pred)
+# return(render_template("prediction.html", r=(-50.6*q)+90.2))    # # renders HTML template "prediction.html" --> # Frontend - Output Display
 
 if __name__ == "__main__":
     app.run()
