@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Sealion Chatbot</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',
+        filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h2>Sealion chatbot</h2>
-        <form action="/sealion_reply" method="POST">
+    <h2>Sealion chatbot</h2>
+        <form action="/sealion_reply" method="post">
             <p>Please enter your query</p>
-            <input type="text" name="q" required>
+            <input type="text" name="q">
             <input type="submit" value="Enter">
         </form>
     </div>
 </body>
-</html>

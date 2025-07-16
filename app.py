@@ -63,28 +63,27 @@ def deepseek_reply():
     return(render_template("deepseek_reply.html",r=completion.choices[0].message.content))
 
 
-@app.route("/sealion", methods=["GET"]) # Route for the initial form page
+@app.route("/sealion",methods=["GET","POST"])
 def sealion():
-    return render_template("sealion.html")
+    return(render_template("sealion.html"))
 
-# Route to handle the form submission and display the reply
-@app.route("/sealion_reply", methods=["POST"])
-def sealion_reply(): # This is now the view function directly for the route
-    print(">>> METHOD:", request.method)
-    print(">>> FORM DATA:", request.form)
+@app.route("/sealion_reply",methods=["GET","POST"])
+def sealion_reply():
     q = request.form.get("q")
     # load model
+
     client = OpenAI(
-        api_key=os.environ['SEALION_API_KEY'],
+        api_key=os.getenv("SEALION_API_KEY"),
         base_url="https://api.sea-lion.ai/v1"
     )
+
     completion = client.chat.completions.create(
         model="aisingapore/Gemma-SEA-LION-v3-9B-IT",
         messages=[
-        {
+            {
             "role": "user",
-            "content":q
-        }
+            "content": q
+            }
         ]
     )
     return(render_template("sealion_reply.html",r=completion.choices[0].message.content))
